@@ -31,6 +31,12 @@
         <hr />
 
         <h4>Ingredientes</h4>
+
+        <!-- NUEVO → Ingrediente más usado -->
+        <p class="mb-2">
+          <strong>Ingrediente más usado:</strong> {{ ingredienteMayor }}
+        </p>
+
         <app-ingredient-list
           [ingredients]="recipe.ingredientes"
         ></app-ingredient-list>
