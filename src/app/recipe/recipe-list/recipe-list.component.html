@@ -1,34 +1,36 @@
 <div class="container mt-4">
-  <table class="table table-hover">
-    <thead class="table-dark">
-      <tr>
-        <th>Receta</th>
-        <th>Imagen</th>
-        <th>Porciones</th>
-        <th>Tiempo</th>
-      </tr>
-    </thead>
+  <h1 class="text-center mb-4">Recetas uniandes</h1>
 
-    <tbody>
-      @for (recipe of recipes; track recipe.id) {
-      <tr style="cursor: pointer" (click)="goToDetail(recipe.id)">
-        <td>{{ recipe.nombre }}</td>
+  <div class="row g-4">
+    @for (recipe of recipes; track recipe.id) {
+    <div class="col-md-3 col-sm-6">
+      <div class="card shadow-sm h-100">
 
-        <td>
-          <img
-            class="recipe-img"
-            [src]="recipe.imagen"
-            alt="{{ recipe.nombre }}"
-            width="100"
-            height="80"
-            style="object-fit: cover"
-          />
-        </td>
+        <img
+          [src]="recipe.imagen"
+          class="card-img-top"
+          alt="{{ recipe.nombre }}"
+          style="height: 180px; object-fit: cover"
+        />
 
-        <td>{{ recipe.porciones }}</td>
-        <td>{{ recipe.tiempo_minutos }} min</td>
-      </tr>
-      }
-    </tbody>
-  </table>
+        <div class="card-body">
+          <h5 class="card-title">{{ recipe.nombre }}</h5>
+
+          <ul class="mb-3">
+            <li><strong>Porciones:</strong> {{ recipe.porciones }}</li>
+            <li><strong>Tiempo:</strong> {{ recipe.tiempo_minutos }} min</li>
+          </ul>
+
+          <button
+            class="btn btn-primary w-100"
+            (click)="goToDetail(recipe.id)"
+          >
+            Ver receta
+          </button>
+        </div>
+
+      </div>
+    </div>
+    }
+  </div>
 </div>

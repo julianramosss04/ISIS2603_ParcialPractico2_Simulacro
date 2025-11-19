@@ -1,11 +1,10 @@
-<ul>
-  @for (ingredient of ingredients; track ingredient.nombre){
-
-  <li>
-    <span>{{ ingredient.nombre }}</span>
-    @if (ingredient.cantidad) {
-    <span> - {{ ingredient.cantidad }} {{ ingredient.unidad }}</span>
-    }
+<ul class="list-group">
+  @for (ingredient of ingredients; track ingredient.nombre) {
+  <li class="list-group-item">
+    <strong>{{ ingredient.nombre }}</strong>
+    <span *ngIf="ingredient.cantidad">
+      – {{ ingredient.cantidad }} {{ ingredient.unidad }}
+    </span>
   </li>
   }
 </ul>
