@@ -1,35 +1,34 @@
-<div>
-  <div>
-    @if (selected) {
-    <div *ngIf="selected">
-      <app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail>
-    </div>
-    }
-    <table>
-      <thead>
-        <tr>
-          <th>Receta</th>
-          <th>Imagen</th>
-          <th>Porciones</th>
-          <th>Tiempo</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for(recipe of recipes; track recipe.id){
-        <tr (click)="onSelect(recipe)">
-          <td>{{ recipe.nombre }}</td>
-          <td>
-            <img
-              class="recipe-img"
-              [src]="recipe.imagen"
-              alt="{{ recipe.imagen }}"
-            />
-          </td>
-          <td>{{ recipe.porciones }}</td>
-          <td>{{ recipe.tiempo_minutos }} min</td>
-        </tr>
-        }
-      </tbody>
-    </table>
-  </div>
+<div class="container mt-4">
+  <table class="table table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Receta</th>
+        <th>Imagen</th>
+        <th>Porciones</th>
+        <th>Tiempo</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (recipe of recipes; track recipe.id) {
+      <tr style="cursor: pointer" (click)="goToDetail(recipe.id)">
+        <td>{{ recipe.nombre }}</td>
+
+        <td>
+          <img
+            class="recipe-img"
+            [src]="recipe.imagen"
+            alt="{{ recipe.nombre }}"
+            width="100"
+            height="80"
+            style="object-fit: cover"
+          />
+        </td>
+
+        <td>{{ recipe.porciones }}</td>
+        <td>{{ recipe.tiempo_minutos }} min</td>
+      </tr>
+      }
+    </tbody>
+  </table>
 </div>
